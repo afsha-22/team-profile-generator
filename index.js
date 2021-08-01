@@ -10,7 +10,8 @@ const path = require("path");
 teamArray = [];
 
 function init() {
-    manager()
+    manager();
+
     function createTeam() {
         inquirer.prompt([
             {
@@ -18,7 +19,7 @@ function init() {
                 message: "Which type of team member would you like to add?",
                 choices: [
                     "Engineer",
-                    "Inter",
+                    "Intern",
                     "No, I don't want to add more team members"
                 ],
                 name: 'newMember'
@@ -34,104 +35,106 @@ function init() {
             }
         })
     }
-}
 
-
-function manager() {
-    inquirer.prompt([
-    {
-        type: 'input',
-        name: 'title',
-        message: 'What is the name of team manager?',
-    },
-    {
-        type: 'input',
-        name: 'id',
-        message: 'What is the id of team manager?',
-    },
-    {
-        type: 'input',
-        name: 'email',
-        message: 'What is the email of team manager?',
-    },
-    {
-        type: 'input',
-        name: 'phone',
-        message: 'What is the office phone number of team manager?',
+    function manager() {
+        inquirer.prompt([
+        {
+            type: 'input',
+            name: 'title',
+            message: 'What is the name of team manager?',
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: 'What is the id of team manager?',
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'What is the email of team manager?',
+        },
+        {
+            type: 'input',
+            name: 'phone',
+            message: 'What is the office phone number of team manager?',
+        }
+        ]).then(answers => {
+            const manager = new Manager(answers.name, answers.id, answers.email, answers.phone);
+            teamArray.push(manager);
+            createTeam();
+        })
+        .catch((err) => {
+            console.error(err);
+        })
     }
-    ]).then(answers => {
-        const manager = new Manager(answers.name, answers.id, answers.email, answers.phone);
-        teamArray.push(manager);
-        createTeam();
-    })
-    .catch((err) => {
-        console.error(err);
-    })
+    
+    function addEngineer() {
+        inquirer.prompt([
+          {
+            type: "input",
+            name: "name",
+            message: "What is the engineer's name?"
+          },
+          {
+            type: "input",
+            name: "id",
+            message: "What is the engineer's employee ID number?" 
+          },
+          {
+            type: "input",
+            name: "email",
+            message: "What is the engineer's email address?"
+          },
+          {
+            type: "input",
+            name: "github",
+            message: "What is the engineer's GitHub username?"
+          }
+        ]).then(answers => {
+          const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
+          teamArray.push(engineer);
+          createTeam();
+        })
+        .catch((err) => {
+            console.error(err);
+        })
+      }
+    
+      function addIntern() {
+        inquirer.prompt([
+          {
+            type: "input",
+            name: "name",
+            message: "What is the intern's name?"
+          },
+          {
+            type: "input",
+            name: "id",
+            message: "What is the intern's employee ID number?" 
+          },
+          {
+            type: "input",
+            name: "email",
+            message: "What is the intern's email address?"
+          },
+          {
+            type: "input",
+            name: "school",
+            message: "What school does the intern attend?"
+          }
+        ]).then(answers => {
+          const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
+          teamArray.push(intern);
+          createTeam();
+        })
+        .catch((err) => {
+            console.error(err);
+        })
+      }
 }
 
-function addEngineer() {
-    inquirer.prompt([
-      {
-        type: "input",
-        name: "name",
-        message: "What is the engineer's name?"
-      },
-      {
-        type: "input",
-        name: "id",
-        message: "What is the engineer's employee ID number?" 
-      },
-      {
-        type: "input",
-        name: "email",
-        message: "What is the engineer's email address?"
-      },
-      {
-        type: "input",
-        name: "github",
-        message: "What is the engineer's GitHub username?"
-      }
-    ]).then(answers => {
-      const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
-      teamArray.push(engineer);
-      createTeam();
-    })
-    .catch((err) => {
-        console.error(err);
-    })
-  }
 
-  function addIntern() {
-    inquirer.prompt([
-      {
-        type: "input",
-        name: "name",
-        message: "What is the intern's name?"
-      },
-      {
-        type: "input",
-        name: "id",
-        message: "What is the intern's employee ID number?" 
-      },
-      {
-        type: "input",
-        name: "email",
-        message: "What is the intern's email address?"
-      },
-      {
-        type: "input",
-        name: "school",
-        message: "What school does the intern attend?"
-      }
-    ]).then(answers => {
-      const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
-      teamArray.push(intern);
-      createTeam();
-    })
-    .catch((err) => {
-        console.error(err);
-    })
-  }
+
 
 
 
@@ -149,5 +152,4 @@ function addEngineer() {
 //   };
 
 // Function call to initialize app
-// init();
 init();
