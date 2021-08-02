@@ -14,7 +14,9 @@ Demonstration video including walkthrough of the functionalities :
 4. User will be then asked if they want to add new employee ie Engineer or Intern, or done with adding everyone.
 5. If chosen to add new employee, series of questions will be presented.
 6. Once user is done with adding everyone, new html will be created under "output" folder named as "team.html".
-7. For all the classes created for this application, respective unit test cases have been added.
+7. Open the generated team.html in the browser, when clicked on the email link, it will open in the email app.
+8. When clicked on the github user linked, it will open in github.
+9. For all the classes created for this application, respective unit test cases have been added.
 
 ## How to run it
 
