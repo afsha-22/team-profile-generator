@@ -1,6 +1,6 @@
 # team-profile-generator
 
-![The Team Profile generator application](./asset/demo_image.png)
+![The Team Profile generator application](./assets/demo_image.png)
 
 > **Note**: The above mockup is not the true representation. Please try yourself for better experience.
 
