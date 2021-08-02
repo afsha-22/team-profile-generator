@@ -43,7 +43,7 @@ function init() {
         inquirer.prompt([
         {
             type: 'input',
-            name: 'title',
+            name: 'name',
             message: 'What is the name of team manager?',
         },
         {
